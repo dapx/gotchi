@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "web": "npx webpack-dev-server -d --config ./web/webpack.config.js --inline --hot --colors",
-    "web:release": "npx webpack -p --config ./web/webpack.config.js",
+    "web:release": "npx webpack -p --config ./web/webpack.config.js && cp index.html dist/index.html",
     "test": "jest"
   },
   "dependencies": {
