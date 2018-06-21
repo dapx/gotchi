@@ -9,7 +9,7 @@ const appDirectory = path.resolve(__dirname, '../');
 // errors. To fix this webpack can be configured to compile to the necessary
 // `node_module`.
 const babelLoaderConfiguration = {
-  test: /\.js$/,
+  test: /\.(jsx?|tsx?)$/,
   // Add every directory that needs to be compiled by Babel during the build.
   include: [
     path.resolve(appDirectory, 'index.web.js'),
@@ -44,6 +44,22 @@ const imageLoaderConfiguration = {
   }
 };
 
+const typescriptConfiguration = {
+  test: /\.tsx?$/,
+  use: {
+    loader: "awesome-typescript-loader",
+    options: {
+      name: '[name].[ext]',
+    }
+  }
+ }
+
+const sourceMapConfiguration = {
+  enforce: "pre",
+  test: /\.js$/,
+  loader: "source-map-loader"
+}
+
 module.exports = {
   entry: [
     // load any web API polyfills
@@ -64,7 +80,9 @@ module.exports = {
     rules: [
       babelLoaderConfiguration,
       imageLoaderConfiguration,
-      cssLoader
+      cssLoader,
+      typescriptConfiguration,
+      sourceMapConfiguration
     ]
   },
 
@@ -76,7 +94,7 @@ module.exports = {
     // If you're working on a multi-platform React Native app, web-specific
     // module implementations should be written in files using the extension
     // `.web.js`.
-    extensions: [ '.web.js', '.js' ]
+    extensions: [ '.js', '.jsx', '.web.js', '.web.jsx', '.ts', '.tsx', '.web.ts', '.web.tsx' ]
   },
   plugins: [
     new webpack.EvalSourceMapDevToolPlugin()
