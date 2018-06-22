@@ -14,8 +14,10 @@
     "@types/react-native": "^0.55.22",
     "react": "^16.4.1",
     "react-art": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "react-native": "0.55.4",
+    "react-native-progress": "^3.5.0",
     "react-native-web": "^0.8.4"
   },
   "devDependencies": {
