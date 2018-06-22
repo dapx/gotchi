@@ -10,10 +10,15 @@ import {
   Text,
 } from 'react-native';
 import { CharHeader } from './components/CharHeader';
+import { StatusBar } from './components/StatusBar';
 
 const character = {
   name: 'Orclord',
   image: 'https://opengameart.org/sites/default/files/Orc_ani_run008.png',
+  strength: 0.9,
+  defense: 0.7,
+  agility: 0.2,
+  intelligence: 0.4,
 }
 
 export default class App extends React.Component {
@@ -33,25 +38,32 @@ export default class App extends React.Component {
           <View style={styles.skillsContentBox}>
             <View style={styles.skillsContent}>
               <View style={styles.skill}>
-                <Text style={styles.skillName}>
-                  {'Força'}
-                </Text>
+                <StatusBar
+                  label="Strength"
+                  percentage={character.strength}
+                  color="#e53935"
+                />
               </View>
               <View style={styles.skill}>
-                <Text style={styles.skillName}>
-                  {'Defesa'}
-                </Text>
-              </View>
-
-              <View style={styles.skill}>
-                <Text style={styles.skillName}>
-                  {'Velocidade'}
-                </Text>
+                <StatusBar
+                  label="Defense"
+                  percentage={character.defense}
+                  color="#1E88E5"
+                />
               </View>
               <View style={styles.skill}>
-                <Text style={styles.skillName}>
-                  {'Inteligencia'}
-                </Text>
+                <StatusBar
+                  label="Agility"
+                  percentage={character.agility}
+                  color="#FDD835"
+                />
+              </View>
+              <View style={styles.skill}>
+                <StatusBar
+                  label="Intelligence"
+                  percentage={character.intelligence}
+                  color="#FB8C00"
+                />
               </View>
             </View>
           </View>
