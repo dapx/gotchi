@@ -3,34 +3,59 @@
  * https://github.com/facebook/react-native
  */
 
-import React, { Component } from 'react';
+import * as React from 'react';
 import {
-  Platform,
   StyleSheet,
+  View,
   Text,
-  View
 } from 'react-native';
+import { CharHeader } from './components/CharHeader';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+const character = {
+  name: 'Orclord',
+  image: 'https://opengameart.org/sites/default/files/Orc_ani_run008.png',
+}
 
-export default class App extends Component {
+export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <CharHeader
+          name={character.name}
+          image={character.image}
+        />
+        <View style={styles.skillsContainer}>
+          <View style={styles.skillsTitle}>
+            <Text style={styles.skillsTitleText}>
+              {'Skills'}
+            </Text>
+          </View>
+          <View style={styles.skillsContentBox}>
+            <View style={styles.skillsContent}>
+              <View style={styles.skill}>
+                <Text style={styles.skillName}>
+                  {'Força'}
+                </Text>
+              </View>
+              <View style={styles.skill}>
+                <Text style={styles.skillName}>
+                  {'Defesa'}
+                </Text>
+              </View>
+
+              <View style={styles.skill}>
+                <Text style={styles.skillName}>
+                  {'Velocidade'}
+                </Text>
+              </View>
+              <View style={styles.skill}>
+                <Text style={styles.skillName}>
+                  {'Inteligencia'}
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
@@ -39,18 +64,39 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
+  skillsContainer: {
+    flex: 2,
     margin: 10,
+    borderWidth: 2,
+    borderColor: '#ddd',
   },
-  instructions: {
+  skillsTitle: {
+    flex: 1,
+    borderBottomWidth: 1,
+    borderColor: '#ddd',
+  },
+  skillsTitleText: {
+    flex: 1,
     textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    textAlignVertical: 'center',
+  },
+  skillsContentBox: { flex: 10 },
+  skillsContent: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    margin: 20,
+    borderColor: '#ddd',
+    justifyContent: 'space-around',
+  },
+  skill: {
+    margin: 10,
+    minWidth: 100,
+    borderColor: '#ddd',
+    alignItems: 'flex-start',
+  },
+  skillName: {
+    color: '#ddd'
   },
 });
