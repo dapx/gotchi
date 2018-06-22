@@ -3,8 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import { CharImage } from './CharImage';
 
 export interface Props {
-  name: string;
-  image: string;
+  name?: string;
+  image?: string;
 }
 
 export class CharHeader extends React.Component<Props, {}> {
