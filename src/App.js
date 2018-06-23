@@ -10,7 +10,7 @@ import {
   Text,
 } from 'react-native';
 import { CharHeader } from './components/CharHeader';
-import { StatusBar } from './components/StatusBar';
+import SkillBar from './components/SkillBar';
 
 const character = {
   name: 'Orclord',
@@ -38,30 +38,30 @@ export default class App extends React.Component {
           <View style={styles.skillsContentBox}>
             <View style={styles.skillsContent}>
               <View style={styles.skill}>
-                <StatusBar
+                <SkillBar
                   label="Strength"
-                  percentage={character.strength}
+                  value={character.strength}
                   color="#e53935"
                 />
               </View>
               <View style={styles.skill}>
-                <StatusBar
+                <SkillBar
                   label="Defense"
-                  percentage={character.defense}
+                  value={character.defense}
                   color="#1E88E5"
                 />
               </View>
               <View style={styles.skill}>
-                <StatusBar
+                <SkillBar
                   label="Agility"
-                  percentage={character.agility}
+                  value={character.agility}
                   color="#FDD835"
                 />
               </View>
               <View style={styles.skill}>
-                <StatusBar
+                <SkillBar
                   label="Intelligence"
-                  percentage={character.intelligence}
+                  value={character.intelligence}
                   color="#FB8C00"
                 />
               </View>
@@ -90,8 +90,10 @@ const styles = StyleSheet.create({
   },
   skillsTitleText: {
     flex: 1,
+    fontWeight: 'bold',
     textAlign: 'center',
     textAlignVertical: 'center',
+    padding: 10,
   },
   skillsContentBox: { flex: 10 },
   skillsContent: {
