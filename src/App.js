@@ -9,12 +9,17 @@ import {
   View,
 } from 'react-native';
 import Character from './scenes/Character';
+import CharacterProvider, { withCharacter } from './modules/character';
+
+const CharacterPage = withCharacter(Character);
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Character />
+        <CharacterProvider>
+          <CharacterPage />
+        </CharacterProvider>
       </View>
     );
   }
