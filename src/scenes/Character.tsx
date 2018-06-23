@@ -6,18 +6,15 @@ import {
 } from 'react-native';
 import { CharHeader } from '../components/CharHeader';
 import SkillBar from '../components/SkillBar';
+import { Character as CharacterObject } from '../modules/character';
 
-const character = {
-  name: 'Orclord',
-  image: 'https://opengameart.org/sites/default/files/Orc_ani_run008.png',
-  strength: 0.9,
-  defense: 0.7,
-  agility: 0.2,
-  intelligence: 0.4,
+export interface CharacterProps {
+  character: CharacterObject,
 }
 
-export default class Character extends React.Component<{}, {}> {
+export default class Character extends React.Component<CharacterProps, {}> {
   render() {
+    const { character } = this.props;
     return (
       <View style={styles.container}>
         <CharHeader
