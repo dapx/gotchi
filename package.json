@@ -12,13 +12,15 @@
     "@types/react": "^16.4.1",
     "@types/react-dom": "^16.0.6",
     "@types/react-native": "^0.55.22",
+    "babel-polyfill": "^6.26.0",
     "react": "^16.4.1",
     "react-art": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "react-native": "0.55.4",
     "react-native-progress": "^3.5.0",
-    "react-native-web": "^0.8.4"
+    "react-native-web": "^0.8.4",
+    "react-navigation": "^2.5.5"
   },
   "devDependencies": {
     "@types/jest": "^23.1.1",
@@ -26,7 +28,7 @@
     "awesome-typescript-loader": "^5.1.1",
     "babel-jest": "23.0.1",
     "babel-loader": "^7.1.4",
-    "babel-plugin-react-native-web": "^0.8.4",
+    "babel-plugin-react-native-web": "^0.8.6",
     "babel-preset-react-native": "^4.0.0",
     "jest": "23.1.0",
     "react-native-typescript-transformer": "^1.2.10",
@@ -34,6 +36,7 @@
     "source-map-loader": "^0.2.3",
     "ts-jest": "^22.4.6",
     "typescript": "^2.9.2",
+    "url-loader": "^1.0.1",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"

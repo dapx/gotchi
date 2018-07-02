@@ -15,7 +15,10 @@ const babelLoaderConfiguration = {
     path.resolve(appDirectory, 'index.web.js'),
     path.resolve(appDirectory, 'src'),
     path.resolve(appDirectory, 'node_modules/react-native-uncompiled'),
-    path.resolve(appDirectory, 'node_modules/react-native-progress')
+    path.resolve(appDirectory, 'node_modules/react-native-progress'),
+    path.resolve(appDirectory, 'node_modules/react-navigation'),
+    path.resolve(appDirectory, 'node_modules/react-native-tab-view'),
+    path.resolve(appDirectory, 'node_modules/react-native-safe-area-view')
   ],
   use: {
     loader: 'babel-loader',
@@ -36,7 +39,7 @@ const cssLoader = {
 
 // This is needed for webpack to import static images in JavaScript files.
 const imageLoaderConfiguration = {
-  test: /\.(gif|jpe?g|png|svg)$/,
+  test: /\.(gif|jpe?g|png|svg|ico)$/,
   use: {
     loader: 'url-loader',
     options: {
@@ -64,7 +67,8 @@ const sourceMapConfiguration = {
 module.exports = {
   entry: [
     // load any web API polyfills
-    // path.resolve(appDirectory, 'polyfills-web.js'),
+    // It's necessary for react-navigation
+    path.resolve(appDirectory, 'web/polyfills-web.js'),
     // your web-specific entry file
     path.resolve(appDirectory, 'index.web.js')
   ],
@@ -95,9 +99,12 @@ module.exports = {
     // If you're working on a multi-platform React Native app, web-specific
     // module implementations should be written in files using the extension
     // `.web.js`.
-    extensions: [ '.js', '.jsx', '.web.js', '.web.jsx', '.ts', '.tsx', '.web.ts', '.web.tsx' ]
+    extensions: [ '.web.js', '.web.jsx', '.web.ts', '.web.tsx', '.js', '.jsx', '.ts', '.tsx' ]
   },
   plugins: [
-    new webpack.EvalSourceMapDevToolPlugin()
+    new webpack.EvalSourceMapDevToolPlugin(),
+    new webpack.DefinePlugin({
+      __DEV__: process.argv.includes('-d')
+    }),
   ],
 }
