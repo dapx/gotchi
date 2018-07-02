@@ -5,17 +5,15 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "web": "npx webpack-dev-server -d --config ./web/webpack.config.js --inline --hot --colors",
-    "web:release": "npx webpack -p --config ./web/webpack.config.js && cp index.html dist/index.html",
+    "web:release": "npx webpack -p --config ./web/webpack.config.prod.js && cp index.html dist/index.html",
     "test": "jest"
   },
   "dependencies": {
     "@types/react": "^16.4.1",
     "@types/react-dom": "^16.0.6",
     "@types/react-native": "^0.55.22",
-    "babel-polyfill": "^6.26.0",
     "react": "^16.4.1",
     "react-art": "^16.4.1",
-    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "react-native": "0.55.4",
     "react-native-progress": "^3.5.0",
@@ -36,7 +34,9 @@
     "source-map-loader": "^0.2.3",
     "ts-jest": "^22.4.6",
     "typescript": "^2.9.2",
+    "uglifyjs-webpack-plugin": "^1.2.7",
     "url-loader": "^1.0.1",
+    "babel-polyfill": "^6.26.0",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
