@@ -68,6 +68,7 @@ export default class Character extends React.Component<CharacterProps, {}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   skillsContainer: {
     flex: 2,

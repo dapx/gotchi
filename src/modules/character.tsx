@@ -24,6 +24,11 @@ interface CharacterState {
   character: Character,
 }
 
+/**
+ * This class manage a context for character.
+ * You can create handlers to change its state,
+ * and implements a consumer to apply it in components.
+ */
 export default class CharacterProvider extends React.PureComponent<any, CharacterState> {
   state = {
     character

@@ -8,18 +8,13 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import Character from './scenes/Character';
-import CharacterProvider, { withCharacter } from './modules/character';
-
-const CharacterPage = withCharacter(Character);
+import Router from './routes/index';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <CharacterProvider>
-          <CharacterPage />
-        </CharacterProvider>
+        <Router />
       </View>
     );
   }
