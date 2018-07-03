@@ -1,6 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
-
 const appDirectory = path.resolve(__dirname, '../');
 
 // This is needed for webpack to compile JavaScript.
@@ -14,11 +12,18 @@ const babelLoaderConfiguration = {
   include: [
     path.resolve(appDirectory, 'index.web.js'),
     path.resolve(appDirectory, 'src'),
+    path.resolve(appDirectory, 'node_modules/react-native-web'),
     path.resolve(appDirectory, 'node_modules/react-native-uncompiled'),
     path.resolve(appDirectory, 'node_modules/react-native-progress'),
     path.resolve(appDirectory, 'node_modules/react-navigation'),
     path.resolve(appDirectory, 'node_modules/react-native-tab-view'),
-    path.resolve(appDirectory, 'node_modules/react-native-safe-area-view')
+    path.resolve(appDirectory, 'node_modules/react-native-safe-area-view'),
+    path.resolve(appDirectory, 'node_modules/native-base'),
+    path.resolve(appDirectory, 'node_modules/native-base-shoutem-theme'),
+    path.resolve(appDirectory, 'node_modules/react-native-keyboard-aware-scroll-view'),
+    path.resolve(appDirectory, 'node_modules/react-native-easy-grid'),
+    path.resolve(appDirectory, 'node_modules/react-native-vector-icons'),
+    path.resolve(appDirectory, 'node_modules/react-native-drawer'),
   ],
   use: {
     loader: 'babel-loader',
@@ -56,15 +61,24 @@ const typescriptConfiguration = {
       name: '[name].[ext]',
     }
   }
- }
+ };
 
 const sourceMapConfiguration = {
   enforce: "pre",
   test: /\.js$/,
   loader: "source-map-loader"
-}
+};
 
 module.exports = {
+  module: {
+    rules: [
+      babelLoaderConfiguration,
+      cssLoader,
+      imageLoaderConfiguration,
+      typescriptConfiguration,
+      sourceMapConfiguration
+    ],
+  },
   entry: [
     // load any web API polyfills
     // It's necessary for react-navigation
@@ -72,39 +86,24 @@ module.exports = {
     // your web-specific entry file
     path.resolve(appDirectory, 'index.web.js')
   ],
-
   // configures where the build ends up
   output: {
     filename: 'bundle.web.js',
     path: path.resolve(appDirectory, 'dist')
   },
-
-  // ...the rest of your config
-
-  module: {
-    rules: [
-      babelLoaderConfiguration,
-      imageLoaderConfiguration,
-      cssLoader,
-      typescriptConfiguration,
-      sourceMapConfiguration
-    ]
-  },
-
   resolve: {
     // This will only alias the exact import "react-native"
     alias: {
-      'react-native$': 'react-native-web'
+      'react-native$': 'react-native-web',
+      // Support React Native Web
+      // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
+      'react-native/Libraries/Renderer/shims/ReactNativePropRegistry': 'react-native-web/src/modules/ReactNativePropRegistry',
     },
+    // To have a better performance, if we don't use npm link or yarn link.
+    symlinks: false,
     // If you're working on a multi-platform React Native app, web-specific
     // module implementations should be written in files using the extension
     // `.web.js`.
     extensions: [ '.web.js', '.web.jsx', '.web.ts', '.web.tsx', '.js', '.jsx', '.ts', '.tsx' ]
   },
-  plugins: [
-    new webpack.EvalSourceMapDevToolPlugin(),
-    new webpack.DefinePlugin({
-      __DEV__: true
-    }),
-  ],
-}
+};
