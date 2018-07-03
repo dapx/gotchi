@@ -13,6 +13,10 @@ export interface CharacterProps {
 }
 
 export default class Character extends React.Component<CharacterProps, {}> {
+  static navigationOptions = {
+    title: 'Character Status'
+  }
+
   render() {
     const { character } = this.props;
     return (
