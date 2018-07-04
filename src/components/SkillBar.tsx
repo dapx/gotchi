@@ -49,7 +49,6 @@ export default class SkillBar extends React.Component<SkillBarProps> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     padding: 10,
     maxHeight: 70,
     borderWidth: 1,
