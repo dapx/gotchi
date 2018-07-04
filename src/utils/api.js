@@ -1,5 +1,5 @@
 // Define the api url
-const API_BASE_URL = 'http://www.mocky.io/v2/5b3c14ea330000fd26599e55';
+const API_BASE_URL = 'https://www.mocky.io/v2/5b3c14ea330000fd26599e55';
 
 const Api = {
   header: {
