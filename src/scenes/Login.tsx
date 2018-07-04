@@ -60,7 +60,11 @@ class Login extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { username, password } = this.state;
+    const {
+      username,
+      password,
+      loading
+    } = this.state;
     return (
       <View style={styles.container}>
         <Form style={styles.loginContainer}>
@@ -90,6 +94,7 @@ class Login extends React.PureComponent<Props, State> {
               onPress={this.onLogin}
               block
               light
+              disabled={loading}
             >
               <Text style={styles.buttonText}>
                 Conectar
