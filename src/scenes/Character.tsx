@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   StyleSheet,
+  ScrollView,
   View,
   Text,
 } from 'react-native';
@@ -32,7 +33,10 @@ export default class Character extends React.Component<CharacterProps, {}> {
             </Text>
           </View>
           <View style={styles.skillsContentBox}>
-            <View style={styles.skillsContent}>
+            <ScrollView
+              style={styles.skillScroll}
+              contentContainerStyle={styles.skillScrollContent}
+            >
               <View style={styles.skill}>
                 <SkillBar
                   label="Strength"
@@ -61,7 +65,7 @@ export default class Character extends React.Component<CharacterProps, {}> {
                   color="#FB8C00"
                 />
               </View>
-            </View>
+            </ScrollView>
           </View>
         </View>
       </View>
@@ -93,16 +97,21 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   skillsContentBox: { flex: 10 },
-  skillsContent: {
+  skillScroll: {
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     margin: 20,
     borderColor: '#ddd',
+  },
+  skillScrollContent: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-around',
+    alignContent: 'space-around',
   },
   skill: {
-    margin: 10,
     minWidth: 100,
     borderColor: '#ddd',
     alignItems: 'flex-start',
